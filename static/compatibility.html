@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星座配对 - 星座运势网</title>
+    <meta name="description" content="专业的星座配对分析，了解你与他人的相性指数，找到最适合的伴侣">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">星座运势网</a>
+            <ul class="nav-menu">
+                <li><a href="/">首页</a></li>
+                <li><a href="/horoscope">今日运势</a></li>
+                <li><a href="/compatibility">星座配对</a></li>
+                <li><a href="/search">星座查询</a></li>
+                <li><a href="/shop">礼品商城</a></li>
+                <li><a href="/about">关于我们</a></li>
+            </ul>
+            <a href="/auth/login" class="login-btn">微信登录</a>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 页面标题 -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>星座配对分析</h1>
+                <p>探索两个星座之间的相性指数和配对建议</p>
+            </div>
+        </section>
+
+        <!-- 配对表单 -->
+        <section class="form-section" style="padding: 2rem;">
+            <div class="form-container">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">选择配对星座</h2>
+                <form id="compatibility-form">
+                    <div class="form-group">
+                        <label for="sign1-select">第一个星座：</label>
+                        <select id="sign1-select" required>
+                            <option value="">请选择第一个星座</option>
+                            <option value="aries">白羊座</option>
+                            <option value="taurus">金牛座</option>
+                            <option value="gemini">双子座</option>
+                            <option value="cancer">巨蟹座</option>
+                            <option value="leo">狮子座</option>
+                            <option value="virgo">处女座</option>
+                            <option value="libra">天秤座</option>
+                            <option value="scorpio">天蝎座</option>
+                            <option value="sagittarius">射手座</option>
+                            <option value="capricorn">摩羯座</option>
+                            <option value="aquarius">水瓶座</option>
+                            <option value="pisces">双鱼座</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sign2-select">第二个星座：</label>
+                        <select id="sign2-select" required>
+                            <option value="">请选择第二个星座</option>
+                            <option value="aries">白羊座</option>
+                            <option value="taurus">金牛座</option>
+                            <option value="gemini">双子座</option>
+                            <option value="cancer">巨蟹座</option>
+                            <option value="leo">狮子座</option>
+                            <option value="virgo">处女座</option>
+                            <option value="libra">天秤座</option>
+                            <option value="scorpio">天蝎座</option>
+                            <option value="sagittarius">射手座</option>
+                            <option value="capricorn">摩羯座</option>
+                            <option value="aquarius">水瓶座</option>
+                            <option value="pisces">双鱼座</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">开始配对分析</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 配对结果显示 -->
+        <section class="result-section" style="padding: 2rem;">
+            <div id="compatibility-result" class="result-container hidden">
+                <!-- 配对结果将通过JavaScript动态生成 -->
+            </div>
+        </section>
+
+        <!-- 配对指南 -->
+        <section class="guide-section" style="padding: 4rem 2rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+                <h2 style="color: white; font-size: 2.5rem; margin-bottom: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">星座配对指南</h2>
+                <div class="guide-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="guide-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔥</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">火象星座</h3>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">白羊座、狮子座、射手座</p>
+                        <p style="color: #555; font-size: 0.9rem;">热情奔放，充满活力，喜欢冒险和挑战，与风象星座配对效果佳。</p>
+                    </div>
+                    <div class="guide-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌍</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">土象星座</h3>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">金牛座、处女座、摩羯座</p>
+                        <p style="color: #555; font-size: 0.9rem;">稳重踏实，注重现实，追求安全感，与水象星座相性良好。</p>
+                    </div>
+                    <div class="guide-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">💨</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">风象星座</h3>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">双子座、天秤座、水瓶座</p>
+                        <p style="color: #555; font-size: 0.9rem;">聪明机智，善于沟通，思维活跃，与火象星座互相吸引。</p>
+                    </div>
+                    <div class="guide-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">💧</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">水象星座</h3>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">巨蟹座、天蝎座、双鱼座</p>
+                        <p style="color: #555; font-size: 0.9rem;">感情丰富，直觉敏锐，重视情感交流，与土象星座配对稳定。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门配对推荐 -->
+        <section class="popular-pairs" style="padding: 4rem 2rem;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+                <h2 style="color: white; font-size: 2.5rem; margin-bottom: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">热门配对推荐</h2>
+                <div class="pairs-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <div class="pair-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">♌ ❤️ ♈</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">狮子座 × 白羊座</h3>
+                        <div style="background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">配对指数: 95%</div>
+                        <p style="color: #666; font-size: 0.9rem;">两个火象星座的完美结合，充满激情与活力，是天作之合的一对。</p>
+                    </div>
+                    <div class="pair-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">♊ ❤️ ♒</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">双子座 × 水瓶座</h3>
+                        <div style="background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">配对指数: 92%</div>
+                        <p style="color: #666; font-size: 0.9rem;">风象星座的智慧碰撞，思维同步，沟通无障碍，精神契合度极高。</p>
+                    </div>
+                    <div class="pair-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">♉ ❤️ ♍</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">金牛座 × 处女座</h3>
+                        <div style="background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">配对指数: 90%</div>
+                        <p style="color: #666; font-size: 0.9rem;">土象星座的稳定组合，价值观相近，追求品质生活，感情持久稳固。</p>
+                    </div>
+                    <div class="pair-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">♋ ❤️ ♓</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">巨蟹座 × 双鱼座</h3>
+                        <div style="background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">配对指数: 88%</div>
+                        <p style="color: #666; font-size: 0.9rem;">水象星座的温柔相遇，情感丰富，互相理解，浪漫指数爆表。</p>
+                    </div>
+                    <div class="pair-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">♎ ❤️ ♐</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">天秤座 × 射手座</h3>
+                        <div style="background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">配对指数: 86%</div>
+                        <p style="color: #666; font-size: 0.9rem;">优雅与自由的完美平衡，既有浪漫情调，又保持独立空间。</p>
+                    </div>
+                    <div class="pair-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">♏ ❤️ ♑</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">天蝎座 × 摩羯座</h3>
+                        <div style="background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; display: inline-block; margin-bottom: 1rem;">配对指数: 84%</div>
+                        <p style="color: #666; font-size: 0.9rem;">深沉与稳重的结合，目标一致，互相支持，是事业爱情双丰收的组合。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 星座运势网. 探索星空奥秘，指引人生方向.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">本网站仅供娱乐参考，请理性对待星座运势</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

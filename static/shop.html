@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>礼品商城 - 星座运势网</title>
+    <meta name="description" content="星座主题礼品商城，精选星座饰品、水晶、塔罗牌等神秘礼品">
+    <meta name="keywords" content="星座礼品,水晶,塔罗牌,星座饰品,占卜用品">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">星座运势网</a>
+            <ul class="nav-menu">
+                <li><a href="/">首页</a></li>
+                <li><a href="/horoscope">今日运势</a></li>
+                <li><a href="/compatibility">星座配对</a></li>
+                <li><a href="/search">星座查询</a></li>
+                <li><a href="/shop">礼品商城</a></li>
+                <li><a href="/about">关于我们</a></li>
+            </ul>
+            <a href="/auth/login" class="login-btn">微信登录</a>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 商城标题区域 -->
+        <section class="shop-hero">
+            <div class="container">
+                <h1 style="text-align: center; color: white; font-size: 3rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">✨ 星座礼品商城 ✨</h1>
+                <p style="text-align: center; color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-bottom: 2rem;">精选星座主题礼品，为你的生活增添神秘色彩</p>
+            </div>
+        </section>
+
+        <!-- 商品分类导航 -->
+        <section class="category-nav">
+            <div class="container">
+                <div class="category-buttons">
+                    <button class="category-btn active" data-category="all">全部商品</button>
+                    <button class="category-btn" data-category="jewelry">星座饰品</button>
+                    <button class="category-btn" data-category="crystal">水晶宝石</button>
+                    <button class="category-btn" data-category="tarot">塔罗占卜</button>
+                    <button class="category-btn" data-category="home">家居装饰</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 商品网格 -->
+        <section class="products-section">
+            <div class="container">
+                <div class="products-grid" id="productsGrid">
+                    <!-- 商品将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 购物车侧边栏 -->
+        <div class="cart-sidebar" id="cartSidebar">
+            <div class="cart-header">
+                <h3>购物车</h3>
+                <button class="close-cart" id="closeCart">×</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- 购物车商品 -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>总计: ¥<span id="cartTotal">0</span></span>
+                </div>
+                <button class="checkout-btn">立即结算</button>
+            </div>
+        </div>
+
+        <!-- 购物车按钮 -->
+        <button class="cart-toggle" id="cartToggle">
+            🛒 <span id="cartCount">0</span>
+        </button>
+    </main>
+
+    <script src="/static/js/main.js"></script>
+    <script>
+        // 商品数据
+        const products = [
+            {
+                id: 1,
+                name: "十二星座项链套装",
+                price: 299,
+                image: "/static/images/necklace.jpg",
+                category: "jewelry",
+                description: "精美的十二星座吊坠项链，925银镀金工艺"
+            },
+            {
+                id: 2,
+                name: "天然紫水晶能量石",
+                price: 188,
+                image: "/static/images/crystal.jpg",
+                category: "crystal",
+                description: "天然紫水晶原石，提升直觉力和灵性"
+            },
+            {
+                id: 3,
+                name: "韦特塔罗牌经典版",
+                price: 128,
+                image: "/static/images/tarot.jpg",
+                category: "tarot",
+                description: "经典韦特塔罗牌，附赠详细说明书"
+            },
+            {
+                id: 4,
+                name: "星座能量手链",
+                price: 158,
+                image: "/static/images/bracelet.jpg",
+                category: "jewelry",
+                description: "白羊座专属手链，红玛瑙配金属吊坠"
+            },
+            {
+                id: 5,
+                name: "星座香薰蜡烛",
+                price: 89,
+                image: "/static/images/candle.jpg",
+                category: "home",
+                description: "LED星座投影夜灯，营造浪漫氛围"
+            },
+            {
+                id: 6,
+                name: "星座马克杯套装",
+                price: 168,
+                image: "/static/images/mug.jpg",
+                category: "home",
+                description: "十二星座图案马克杯，陶瓷材质"
+            },
+            {
+                id: 7,
+                name: "天然水晶能量球",
+                price: 268,
+                image: "/static/images/crystal.jpg",
+                category: "crystal",
+                description: "天然月光石球体，增强女性魅力"
+            },
+            {
+                id: 8,
+                name: "塔罗牌占卜套装",
+                price: 128,
+                image: "/static/images/tarot.jpg",
+                category: "tarot",
+                description: "精美木质塔罗牌收纳盒，神秘图案装饰"
+            },
+            {
+                id: 9,
+                name: "星座能量手链",
+                price: 158,
+                image: "/static/images/bracelet.jpg",
+                category: "jewelry",
+                description: "七脉轮天然水晶手链，平衡身心能量"
+            },
+            {
+                id: 10,
+                name: "星座项链吊坠",
+                price: 199,
+                image: "/static/images/necklace.jpg",
+                category: "jewelry",
+                description: "十二星座耳钉套装，精致小巧设计"
+            },
+            {
+                id: 11,
+                name: "星座香薰蜡烛",
+                price: 89,
+                image: "/static/images/candle.jpg",
+                category: "home",
+                description: "天然大豆蜡制作，持久香氛"
+            },
+            {
+                id: 12,
+                name: "星座陶瓷马克杯",
+                price: 68,
+                image: "/static/images/mug.jpg",
+                category: "home",
+                description: "十二星座图案马克杯，陶瓷材质"
+            }
+        ];
+
+        // 购物车数据
+        let cart = [];
+
+        // 初始化商城页面
+        function initializeShop() {
+            renderProducts(products);
+            setupCategoryFilter();
+            setupCart();
+        }
+
+        // 渲染商品
+        function renderProducts(productsToRender) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = productsToRender.map(product => `
+                <div class="product-card" data-category="${product.category}">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect width=%22200%22 height=%22200%22 fill=%22%23f0f0f0%22/><text x=%22100%22 y=%22100%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2216%22 fill=%22%23999%22>商品图片</text></svg>'">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">¥${product.price}</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">加入购物车</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 设置分类过滤
+        function setupCategoryFilter() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 更新按钮状态
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // 过滤商品
+                    const category = btn.dataset.category;
+                    const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
+                    renderProducts(filteredProducts);
+                });
+            });
+        }
+
+        // 添加到购物车
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showSuccess('商品已添加到购物车！');
+        }
+
+        // 设置购物车
+        function setupCart() {
+            const cartToggle = document.getElementById('cartToggle');
+            const cartSidebar = document.getElementById('cartSidebar');
+            const closeCart = document.getElementById('closeCart');
+
+            cartToggle.addEventListener('click', () => {
+                cartSidebar.classList.add('active');
+            });
+
+            closeCart.addEventListener('click', () => {
+                cartSidebar.classList.remove('active');
+            });
+
+            // 点击外部关闭购物车
+            document.addEventListener('click', (e) => {
+                if (!cartSidebar.contains(e.target) && !cartToggle.contains(e.target)) {
+                    cartSidebar.classList.remove('active');
+                }
+            });
+        }
+
+        // 更新购物车UI
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+
+            // 更新商品数量
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            // 更新购物车内容
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <div class="cart-item-controls">
+                            <button onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                        <div class="cart-item-price">¥${item.price * item.quantity}</div>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${item.id})">×</button>
+                </div>
+            `).join('');
+
+            // 更新总价
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = total;
+        }
+
+        // 更新商品数量
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        // 从购物车移除商品
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initializeShop);
+    </script>
+
+    <style>
+        /* 商城特定样式 */
+        .shop-hero {
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .category-nav {
+            padding: 2rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            transform: translateY(-2px);
+        }
+
+        .products-section {
+            padding: 3rem 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* 购物车样式 */
+        .cart-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .cart-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .cart-item-controls button {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .cart-item-price {
+            font-weight: 600;
+            color: #e74c3c;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .cart-sidebar {
+                width: 100vw;
+                right: -100vw;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+            
+            .category-buttons {
+                gap: 0.5rem;
+            }
+            
+            .category-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</body>
+</html>

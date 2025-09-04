@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星座查询 - 星座运势网</title>
+    <meta name="description" content="输入生日快速查询你的星座，了解星座特征和性格分析">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">星座运势网</a>
+            <ul class="nav-menu">
+                <li><a href="/">首页</a></li>
+                <li><a href="/horoscope">今日运势</a></li>
+                <li><a href="/compatibility">星座配对</a></li>
+                <li><a href="/search">星座查询</a></li>
+                <li><a href="/shop">礼品商城</a></li>
+                <li><a href="/about">关于我们</a></li>
+            </ul>
+            <a href="/auth/login" class="login-btn">微信登录</a>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 页面标题 -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>星座查询</h1>
+                <p>输入你的生日，快速查询你的星座</p>
+            </div>
+        </section>
+
+        <!-- 查询表单 -->
+        <section class="form-section" style="padding: 2rem;">
+            <div class="form-container">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">输入你的生日</h2>
+                <form id="search-form">
+                    <div class="form-group">
+                        <label for="birthday">选择你的生日：</label>
+                        <input type="date" id="birthday" required>
+                    </div>
+                    <button type="submit" class="submit-btn">查询我的星座</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 查询结果显示 -->
+        <section class="result-section" style="padding: 2rem;">
+            <div id="search-result" class="result-container hidden">
+                <!-- 查询结果将通过JavaScript动态生成 -->
+            </div>
+        </section>
+
+        <!-- 十二星座详细信息 -->
+        <section class="zodiac-details" style="padding: 4rem 2rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+                <h2 style="color: white; font-size: 2.5rem; margin-bottom: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">十二星座详解</h2>
+                <div class="zodiac-details-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♈</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">白羊座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">3月21日 - 4月19日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">热情冲动，勇敢直率，喜欢冒险和挑战，是天生的领导者。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♉</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">金牛座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">4月20日 - 5月20日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">稳重踏实，追求安全感，喜欢美好事物，有很强的耐心。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♊</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">双子座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">5月21日 - 6月20日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">聪明机智，善于沟通，好奇心强，适应能力很强。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♋</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">巨蟹座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">6月21日 - 7月22日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">温柔体贴，重视家庭，情感丰富，有很强的保护欲。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♌</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">狮子座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">7月23日 - 8月22日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">自信大方，喜欢成为焦点，有王者风范，慷慨大度。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♍</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">处女座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">8月23日 - 9月22日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">完美主义者，注重细节，有很强的分析能力和责任心。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♎</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">天秤座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">9月23日 - 10月22日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">追求平衡和谐，有很好的审美观，善于协调人际关系。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♏</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">天蝎座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">10月23日 - 11月21日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">神秘深沉，直觉敏锐，意志坚强，有很强的洞察力。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♐</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">射手座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">11月22日 - 12月21日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">乐观开朗，热爱自由，喜欢探索和冒险，有哲学思维。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♑</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">摩羯座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">12月22日 - 1月19日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">务实稳重，有很强的事业心，目标明确，坚持不懈。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♒</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">水瓶座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">1月20日 - 2月18日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">独立创新，思维前卫，重视友谊，有人道主义精神。</p>
+                    </div>
+                    <div class="zodiac-detail-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♓</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;">双鱼座</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">2月19日 - 3月20日</p>
+                        <p style="color: #555; font-size: 0.85rem; line-height: 1.5;">浪漫感性，富有想象力，同情心强，艺术天赋很高。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 星座知识 -->
+        <section class="knowledge-section" style="padding: 4rem 2rem;">
+            <div class="container" style="max-width: 1000px; margin: 0 auto; text-align: center;">
+                <h2 style="color: white; font-size: 2.5rem; margin-bottom: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">星座小知识</h2>
+                <div class="knowledge-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="knowledge-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌟</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">星座起源</h3>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.9rem;">星座起源于古巴比伦，后来传到古希腊。古人将天空中的星星连成各种图案，用来指示方向和时间，逐渐发展成为占星学。</p>
+                    </div>
+                    <div class="knowledge-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔮</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">四大元素</h3>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.9rem;">十二星座分为四大元素：火象（白羊、狮子、射手）、土象（金牛、处女、摩羯）、风象（双子、天秤、水瓶）、水象（巨蟹、天蝎、双鱼）。</p>
+                    </div>
+                    <div class="knowledge-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📅</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">星座日期</h3>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.9rem;">星座日期是根据太阳在黄道上的位置确定的，每年的具体日期可能会有1-2天的差异，这是由于地球公转轨道的微小变化造成的。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 星座运势网. 探索星空奥秘，指引人生方向.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">本网站仅供娱乐参考，请理性对待星座运势</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

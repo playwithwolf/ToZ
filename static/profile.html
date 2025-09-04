@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料 - 星座运势网</title>
+    <meta name="description" content="查看和管理您的个人资料，获取专属星座运势">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">星座运势网</a>
+            <ul class="nav-menu">
+                <li><a href="/">首页</a></li>
+                <li><a href="/horoscope">今日运势</a></li>
+                <li><a href="/compatibility">星座配对</a></li>
+                <li><a href="/search">星座查询</a></li>
+                <li><a href="/shop">礼品商城</a></li>
+                <li><a href="/about">关于我们</a></li>
+            </ul>
+            <a href="/auth/login" class="login-btn">微信登录</a>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 页面标题 -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>个人资料</h1>
+                <p>管理您的个人信息，获取专属星座运势</p>
+            </div>
+        </section>
+
+        <!-- 登录提示 -->
+        <section id="login-prompt" class="login-prompt" style="padding: 4rem 2rem; text-align: center;">
+            <div class="container" style="max-width: 600px; margin: 0 auto;">
+                <div style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 3rem;">
+                    <div style="font-size: 4rem; margin-bottom: 2rem;">🔐</div>
+                    <h2 style="color: #333; margin-bottom: 1rem;">请先登录</h2>
+                    <p style="color: #666; margin-bottom: 2rem; line-height: 1.6;">登录后即可查看您的个人资料和专属星座运势</p>
+                    <a href="/auth/login" class="submit-btn" style="display: inline-block; text-decoration: none;">微信登录</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 用户资料 -->
+        <section id="user-profile" class="user-profile hidden" style="padding: 4rem 2rem;">
+            <div class="container" style="max-width: 1000px; margin: 0 auto;">
+                <!-- 基本信息卡片 -->
+                <div class="profile-card" style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 3rem; margin-bottom: 2rem;">
+                    <div class="profile-header" style="display: flex; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 2rem;">
+                        <div id="user-avatar" class="avatar" style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; flex-shrink: 0;">👤</div>
+                        <div class="profile-info" style="flex: 1; min-width: 200px;">
+                            <h2 id="user-nickname" style="color: #333; margin-bottom: 0.5rem; font-size: 2rem;">用户昵称</h2>
+                            <p id="user-location" style="color: #666; margin-bottom: 0.5rem;">所在地区</p>
+                            <p style="color: #999; font-size: 0.9rem;">微信用户</p>
+                        </div>
+                        <div class="profile-actions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button id="refresh-btn" class="submit-btn" style="background: #4CAF50; border: none; cursor: pointer;">刷新信息</button>
+                            <button id="logout-btn" class="submit-btn" style="background: #f44336; border: none; cursor: pointer;">退出登录</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 星座信息卡片 -->
+                <div class="zodiac-card" style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 3rem; margin-bottom: 2rem;">
+                    <h3 style="color: #333; margin-bottom: 2rem; font-size: 1.8rem; text-align: center;">您的星座信息</h3>
+                    <div id="user-zodiac-info" style="text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🌟</div>
+                        <p style="color: #666; font-size: 1.1rem;">请在星座查询页面设置您的生日，获取专属星座信息</p>
+                        <a href="/search" class="submit-btn" style="display: inline-block; text-decoration: none; margin-top: 1rem;">查询我的星座</a>
+                    </div>
+                </div>
+
+                <!-- 今日运势卡片 -->
+                <div class="fortune-card" style="background: rgba(255,255,255,0.95); border-radius: 20px; padding: 3rem; margin-bottom: 2rem;">
+                    <h3 style="color: #333; margin-bottom: 2rem; font-size: 1.8rem; text-align: center;">今日专属运势</h3>
+                    <div id="user-fortune" style="text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🔮</div>
+                        <p style="color: #666; font-size: 1.1rem;">设置星座信息后，即可获取每日专属运势</p>
+                    </div>
+                </div>
+
+                <!-- 功能快捷入口 -->
+                <div class="quick-actions" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div class="action-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
+                        <h4 style="color: #333; margin-bottom: 1rem;">今日运势</h4>
+                        <p style="color: #666; margin-bottom: 1.5rem; font-size: 0.9rem;">查看您的每日星座运势预测</p>
+                        <a href="/horoscope" class="submit-btn" style="display: inline-block; text-decoration: none; font-size: 0.9rem; padding: 0.5rem 1.5rem;">查看运势</a>
+                    </div>
+                    <div class="action-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">💕</div>
+                        <h4 style="color: #333; margin-bottom: 1rem;">星座配对</h4>
+                        <p style="color: #666; margin-bottom: 1.5rem; font-size: 0.9rem;">测试您与他人的星座配对指数</p>
+                        <a href="/compatibility" class="submit-btn" style="display: inline-block; text-decoration: none; font-size: 0.9rem; padding: 0.5rem 1.5rem;">开始配对</a>
+                    </div>
+                    <div class="action-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔍</div>
+                        <h4 style="color: #333; margin-bottom: 1rem;">星座查询</h4>
+                        <p style="color: #666; margin-bottom: 1.5rem; font-size: 0.9rem;">根据生日查询星座信息</p>
+                        <a href="/search" class="submit-btn" style="display: inline-block; text-decoration: none; font-size: 0.9rem; padding: 0.5rem 1.5rem;">立即查询</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 使用统计 -->
+        <section id="user-stats" class="user-stats hidden" style="padding: 4rem 2rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+            <div class="container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h3 style="color: white; font-size: 2rem; margin-bottom: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">使用统计</h3>
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                    <div class="stat-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem; color: #667eea;">7</div>
+                        <h4 style="color: #333; margin-bottom: 0.5rem;">访问天数</h4>
+                        <p style="color: #666; font-size: 0.9rem;">连续使用天数</p>
+                    </div>
+                    <div class="stat-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem; color: #f093fb;">23</div>
+                        <h4 style="color: #333; margin-bottom: 0.5rem;">运势查询</h4>
+                        <p style="color: #666; font-size: 0.9rem;">累计查询次数</p>
+                    </div>
+                    <div class="stat-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem; color: #4facfe;">12</div>
+                        <h4 style="color: #333; margin-bottom: 0.5rem;">配对测试</h4>
+                        <p style="color: #666; font-size: 0.9rem;">配对测试次数</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 星座运势网. 探索星空奥秘，指引人生方向.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">本网站仅供娱乐参考，请理性对待星座运势</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

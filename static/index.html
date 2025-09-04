@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星座运势网 - 探索你的星座奥秘</title>
+    <meta name="description" content="专业的星座运势网站，提供每日星座运势、星座配对、星座查询等服务">
+    <meta name="keywords" content="星座,运势,配对,占卜,十二星座">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">星座运势网</a>
+            <ul class="nav-menu">
+                <li><a href="/">首页</a></li>
+                <li><a href="/horoscope">今日运势</a></li>
+                <li><a href="/compatibility">星座配对</a></li>
+                <li><a href="/search">星座查询</a></li>
+                <li><a href="/shop">礼品商城</a></li>
+                <li><a href="/about">关于我们</a></li>
+            </ul>
+            <a href="/auth/login" class="login-btn">微信登录</a>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 英雄区域 -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>探索你的星座奥秘</h1>
+                <p>专业的星座运势分析，为你揭示星空中的秘密</p>
+                <a href="/horoscope" class="cta-button">查看今日运势</a>
+            </div>
+        </section>
+
+        <!-- 十二星座网格 -->
+        <section class="zodiac-section">
+            <div class="container">
+                <h2 style="text-align: center; color: white; font-size: 2.5rem; margin-bottom: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">十二星座</h2>
+                <div class="zodiac-grid">
+                    <!-- 星座卡片将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 功能特色 -->
+        <section class="features">
+            <div class="features-container">
+                <h2>我们的服务</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🔮</span>
+                        <h3>每日运势</h3>
+                        <p>获取专业的每日星座运势分析，包括爱情、事业、财运、健康等各个方面的详细预测。</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">💕</span>
+                        <h3>星座配对</h3>
+                        <p>通过星座配对分析，了解你与他人的相性指数，找到最适合的伴侣和朋友。</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔍</span>
+                        <h3>星座查询</h3>
+                        <p>输入生日即可快速查询你的星座，了解星座特征和性格分析。</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📱</span>
+                        <h3>微信登录</h3>
+                        <p>支持微信一键登录，保存你的个人偏好设置，享受个性化的星座服务。</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3>精准分析</h3>
+                        <p>基于专业的占星学理论，为你提供准确可靠的星座运势和性格分析。</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🌟</span>
+                        <h3>幸运指南</h3>
+                        <p>每日幸运数字、幸运颜色、幸运方位等贴心提醒，助你把握好运。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 今日推荐 -->
+        <section class="daily-recommendation" style="padding: 4rem 2rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+                <h2 style="color: white; font-size: 2.5rem; margin-bottom: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">今日星座运势推荐</h2>
+                <div class="recommendation-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="recommendation-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♌</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">狮子座</h3>
+                        <p style="color: #666; line-height: 1.6;">今日运势极佳，适合展现领导才能，在工作中会有突出表现。</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.9rem;">运势指数: 95</span>
+                        </div>
+                    </div>
+                    <div class="recommendation-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♎</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">天秤座</h3>
+                        <p style="color: #666; line-height: 1.6;">感情运势旺盛，单身者有机会遇到心仪对象，恋爱中的人感情升温。</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.9rem;">运势指数: 92</span>
+                        </div>
+                    </div>
+                    <div class="recommendation-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">♓</div>
+                        <h3 style="color: #333; margin-bottom: 1rem;">双鱼座</h3>
+                        <p style="color: #666; line-height: 1.6;">财运不错，有意外收入的可能，但要注意理性消费，避免冲动购买。</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #667eea; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.9rem;">运势指数: 88</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem;">
+                    <a href="/horoscope" class="cta-button">查看更多运势</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 用户见证 -->
+        <section class="testimonials" style="padding: 4rem 2rem;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+                <h2 style="color: white; font-size: 2.5rem; margin-bottom: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">用户好评</h2>
+                <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="testimonial-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem;">
+                        <div style="color: #667eea; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">"运势分析很准确，每天都会来看看，对我的生活很有帮助！"</p>
+                        <div style="color: #333; font-weight: bold;">- 白羊座用户</div>
+                    </div>
+                    <div class="testimonial-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem;">
+                        <div style="color: #667eea; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">"星座配对功能太棒了，帮我找到了合适的另一半！"</p>
+                        <div style="color: #333; font-weight: bold;">- 天蝎座用户</div>
+                    </div>
+                    <div class="testimonial-card" style="background: rgba(255,255,255,0.95); border-radius: 15px; padding: 2rem;">
+                        <div style="color: #667eea; font-size: 1.5rem; margin-bottom: 1rem;">⭐⭐⭐⭐⭐</div>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">"界面设计很美观，使用体验非常好，推荐给朋友们！"</p>
+                        <div style="color: #333; font-weight: bold;">- 双子座用户</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 星座运势网. 探索星空奥秘，指引人生方向.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">本网站仅供娱乐参考，请理性对待星座运势</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
